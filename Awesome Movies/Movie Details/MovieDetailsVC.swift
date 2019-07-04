@@ -11,10 +11,6 @@ import Imaginary
 import Lightbox
 import Cosmos
 class MovieDetailsVC: UIViewController {
-    @IBOutlet weak var movieTitleLbl: UILabel!
-    @IBOutlet weak var movieYearLbl: UILabel!
-    @IBOutlet weak var ratingView: CosmosView!
-    @IBOutlet weak var stackView: UIStackView!
     var flickerHelper:FlickrApiHelper?
     @IBOutlet weak var photosCollectionView: UICollectionView!
     var heroIndex = ""
@@ -28,41 +24,11 @@ class MovieDetailsVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateStackView()
         setupHero()
-        photosCollectionView.accessibilityIdentifier = "PhotosCollctionView"
     }
     func setupHero(){
         self.hero.isEnabled = true
-        movieTitleLbl.hero.id = heroIndex + "-title"
-        ratingView.hero.id = heroIndex + "-rateView"
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
-    }
-    func updateStackView(){
-        movieTitleLbl.text = "●Title: \(movie.title ?? "")"
-        movieYearLbl.text = "●Release Year: \(movie.year ?? 0)"
-        ratingView.rating = movie.rating ?? 0
-        if (movie.cast?.count ?? 0) > 0 {
-            addLblWith(text:"●Cast:")
-            for actor in movie.cast ?? [String]() {
-                addLblWith(text: "\t-\(actor)")
-            }
-        }
-        if (movie.genres?.count ?? 0) > 0 {
-            addLblWith(text:"●Genre:")
-            for genre in movie.genres ?? [String]() {
-                addLblWith(text: "\t-\(genre)")
-            }
-        }
-        self.view.updateConstraintsIfNeeded()
-    }
-    func addLblWith(text:String){
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 146, height: 20))
-        label.font = UIFont(name: "Montserrat-Regular", size: 15)
-        label.textColor = .white
-        label.text = text
-        label.numberOfLines = 0
-        stackView.addArrangedSubview(label)
     }
 }
 extension MovieDetailsVC:UICollectionViewDelegate {
@@ -94,7 +60,6 @@ extension MovieDetailsVC:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row >= (flickerHelper?.flickrPhotos.photo?.count ?? 0) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LoadingCell", for: indexPath)
-            cell.accessibilityIdentifier = "PhotoCell_\(indexPath.row)"
             let activityIndicator = cell.viewWithTag(1) as! UIActivityIndicatorView
             activityIndicator.startAnimating()
             flickerHelper?.getImages(completionhandler: { (resCode) in
@@ -103,13 +68,39 @@ extension MovieDetailsVC:UICollectionViewDataSource {
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath)
-        cell.accessibilityIdentifier = "PhotoCell_\(indexPath.row)"
         let imgView = cell.viewWithTag(1) as! UIImageView
         let item = flickerHelper?.flickrPhotos.photo?[indexPath.row] ?? photoItem()
         guard let imageUrl = URL(string: item.getPhoto()) else { return cell }
         imgView.setImage(url: imageUrl, placeholder: UIImage(named:"vide"))
         return cell
     }
-    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: "MoviesCVHeader",
+                for: indexPath) as? MoviesCVHeader
+                else {
+                    return UIView() as! UICollectionReusableView
+            }
+            headerView.setupView(movie: movie)
+            return headerView
+        }
+        return UICollectionReusableView()
+    }
     
 }
+extension MovieDetailsVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        // ofSize should be the same size of the headerView's label size:
+        let numberOfElements = 3 + (movie.cast?.count ?? 0) + (movie.genres?.count ?? 0)
+        let height = 40*numberOfElements
+        return CGSize(width: collectionView.frame.size.width, height: CGFloat(height))
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = collectionView.bounds.width/2.0
+        
+        return CGSize(width: size-5, height: size-5)
+    }
+}
+
