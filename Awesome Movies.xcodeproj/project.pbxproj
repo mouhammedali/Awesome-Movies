@@ -147,7 +147,7 @@
 				0E3C039922C534600046DC99 /* AppDelegate.swift */,
 				0EAD8BD622CDC29E0019817F /* Movie Details */,
 				0E82DD9A22CD95DB0087B2E0 /* Files */,
-				0E82DD9922CD95AC0087B2E0 /* Movies Table Views */,
+				0E82DD9922CD95AC0087B2E0 /* Movies Main View */,
 				0E82DD9822CD958F0087B2E0 /* Models and helpers */,
 				0E3C039D22C534600046DC99 /* Main.storyboard */,
 				0E3C03A022C534640046DC99 /* Assets.xcassets */,
@@ -186,13 +186,13 @@
 			path = "Models and helpers";
 			sourceTree = "<group>";
 		};
-		0E82DD9922CD95AC0087B2E0 /* Movies Table Views */ = {
+		0E82DD9922CD95AC0087B2E0 /* Movies Main View */ = {
 			isa = PBXGroup;
 			children = (
 				0E3C039B22C534600046DC99 /* ViewController.swift */,
 				0E3C040622C6CC9D0046DC99 /* MovieCell.swift */,
 			);
-			path = "Movies Table Views";
+			path = "Movies Main View";
 			sourceTree = "<group>";
 		};
 		0E82DD9A22CD95DB0087B2E0 /* Files */ = {
@@ -601,7 +601,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -656,7 +656,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

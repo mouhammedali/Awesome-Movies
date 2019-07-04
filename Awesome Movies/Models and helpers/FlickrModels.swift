@@ -12,7 +12,7 @@ class Mainphotos:Decodable {
 }
 class FlickrPhotos:Decodable {
     var page:Int?
-    var pages = 1
+    var pages:Int?
     var photo:[photoItem]?
 }
 class photoItem:Decodable {
