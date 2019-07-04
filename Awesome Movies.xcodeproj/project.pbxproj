@@ -16,10 +16,14 @@
 		0E3C03BA22C534650046DC99 /* Awesome_MoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C03B922C534650046DC99 /* Awesome_MoviesUITests.swift */; };
 		0E3C03FF22C69C460046DC99 /* MovieModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C03FE22C69C460046DC99 /* MovieModelItem.swift */; };
 		0E3C040122C6BAB00046DC99 /* movies.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C040022C6BAB00046DC99 /* movies.json */; };
-		0E3C040422C6BD4C0046DC99 /* Cairo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C040222C6BD4B0046DC99 /* Cairo-Regular.ttf */; };
-		0E3C040522C6BD4C0046DC99 /* Cairo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C040322C6BD4B0046DC99 /* Cairo-Black.ttf */; };
 		0E3C040722C6CC9D0046DC99 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C040622C6CC9D0046DC99 /* MovieCell.swift */; };
 		0E3C040922C6D41A0046DC99 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C040822C6D4190046DC99 /* Montserrat-Regular.ttf */; };
+		0E82DD7F22C91BF90087B2E0 /* movies test.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E82DD7E22C91BF90087B2E0 /* movies test.json */; };
+		0E82DD8122C91CF90087B2E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C039D22C534600046DC99 /* Main.storyboard */; };
+		0E82DD8222C91F040087B2E0 /* movies test.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E82DD7E22C91BF90087B2E0 /* movies test.json */; };
+		0E82DD8622C9253A0087B2E0 /* MovieDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E82DD8522C9253A0087B2E0 /* MovieDetailsVC.swift */; };
+		0E82DD9722CAB2560087B2E0 /* FlickrApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E82DD9622CAB2560087B2E0 /* FlickrApiHelper.swift */; };
+		0E82DD9C22CD96300087B2E0 /* FlickrModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E82DD9B22CD96300087B2E0 /* FlickrModels.swift */; };
 		6B1EABF3D23C1F3AFEBA449D /* Pods_Awesome_MoviesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3E1548E4E8E4F10485F99F /* Pods_Awesome_MoviesUITests.framework */; };
 		9F183BAC4BA11B553932CEEA /* Pods_Awesome_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F431E6646FA5DAEDE3D1D6 /* Pods_Awesome_Movies.framework */; };
 		AFC98E20C72BA6D10758FCD2 /* Pods_Awesome_MoviesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161FE1AAAAD29AEA6DC077E4 /* Pods_Awesome_MoviesTests.framework */; };
@@ -59,10 +63,12 @@
 		0E3C03BB22C534650046DC99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E3C03FE22C69C460046DC99 /* MovieModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModelItem.swift; sourceTree = "<group>"; };
 		0E3C040022C6BAB00046DC99 /* movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies.json; sourceTree = "<group>"; };
-		0E3C040222C6BD4B0046DC99 /* Cairo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cairo-Regular.ttf"; sourceTree = "<group>"; };
-		0E3C040322C6BD4B0046DC99 /* Cairo-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cairo-Black.ttf"; sourceTree = "<group>"; };
 		0E3C040622C6CC9D0046DC99 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		0E3C040822C6D4190046DC99 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		0E82DD7E22C91BF90087B2E0 /* movies test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "movies test.json"; path = "Awesome Movies/movies test.json"; sourceTree = SOURCE_ROOT; };
+		0E82DD8522C9253A0087B2E0 /* MovieDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsVC.swift; sourceTree = "<group>"; };
+		0E82DD9622CAB2560087B2E0 /* FlickrApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrApiHelper.swift; sourceTree = "<group>"; };
+		0E82DD9B22CD96300087B2E0 /* FlickrModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrModels.swift; sourceTree = "<group>"; };
 		161FE1AAAAD29AEA6DC077E4 /* Pods_Awesome_MoviesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Awesome_MoviesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BE49D0776844C451EDC39C0 /* Pods-Awesome Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Awesome Movies.release.xcconfig"; path = "Target Support Files/Pods-Awesome Movies/Pods-Awesome Movies.release.xcconfig"; sourceTree = "<group>"; };
 		B934A7887A648226533C81FB /* Pods-Awesome MoviesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Awesome MoviesUITests.debug.xcconfig"; path = "Target Support Files/Pods-Awesome MoviesUITests/Pods-Awesome MoviesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,14 +142,11 @@
 		0E3C039822C534600046DC99 /* Awesome Movies */ = {
 			isa = PBXGroup;
 			children = (
-				0E3C040022C6BAB00046DC99 /* movies.json */,
-				0E3C040822C6D4190046DC99 /* Montserrat-Regular.ttf */,
-				0E3C040322C6BD4B0046DC99 /* Cairo-Black.ttf */,
-				0E3C040222C6BD4B0046DC99 /* Cairo-Regular.ttf */,
 				0E3C039922C534600046DC99 /* AppDelegate.swift */,
-				0E3C039B22C534600046DC99 /* ViewController.swift */,
-				0E3C03FE22C69C460046DC99 /* MovieModelItem.swift */,
-				0E3C040622C6CC9D0046DC99 /* MovieCell.swift */,
+				0E82DD8522C9253A0087B2E0 /* MovieDetailsVC.swift */,
+				0E82DD9A22CD95DB0087B2E0 /* Files */,
+				0E82DD9922CD95AC0087B2E0 /* Movies Table Views */,
+				0E82DD9822CD958F0087B2E0 /* Models and helpers */,
 				0E3C039D22C534600046DC99 /* Main.storyboard */,
 				0E3C03A022C534640046DC99 /* Assets.xcassets */,
 				0E3C03A222C534640046DC99 /* LaunchScreen.storyboard */,
@@ -156,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				0E3C03AE22C534650046DC99 /* Awesome_MoviesTests.swift */,
+				0E82DD7E22C91BF90087B2E0 /* movies test.json */,
 				0E3C03B022C534650046DC99 /* Info.plist */,
 			);
 			path = "Awesome MoviesTests";
@@ -168,6 +172,34 @@
 				0E3C03BB22C534650046DC99 /* Info.plist */,
 			);
 			path = "Awesome MoviesUITests";
+			sourceTree = "<group>";
+		};
+		0E82DD9822CD958F0087B2E0 /* Models and helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0E3C03FE22C69C460046DC99 /* MovieModelItem.swift */,
+				0E82DD9622CAB2560087B2E0 /* FlickrApiHelper.swift */,
+				0E82DD9B22CD96300087B2E0 /* FlickrModels.swift */,
+			);
+			path = "Models and helpers";
+			sourceTree = "<group>";
+		};
+		0E82DD9922CD95AC0087B2E0 /* Movies Table Views */ = {
+			isa = PBXGroup;
+			children = (
+				0E3C039B22C534600046DC99 /* ViewController.swift */,
+				0E3C040622C6CC9D0046DC99 /* MovieCell.swift */,
+			);
+			path = "Movies Table Views";
+			sourceTree = "<group>";
+		};
+		0E82DD9A22CD95DB0087B2E0 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				0E3C040022C6BAB00046DC99 /* movies.json */,
+				0E3C040822C6D4190046DC99 /* Montserrat-Regular.ttf */,
+			);
+			path = Files;
 			sourceTree = "<group>";
 		};
 		CBC0F8D98ECE25FBEFECA42C /* Pods */ = {
@@ -213,6 +245,7 @@
 				0E3C03A622C534650046DC99 /* Sources */,
 				0E3C03A722C534650046DC99 /* Frameworks */,
 				0E3C03A822C534650046DC99 /* Resources */,
+				7AE6519451403F6B29AFDAA2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,6 +265,7 @@
 				0E3C03B122C534650046DC99 /* Sources */,
 				0E3C03B222C534650046DC99 /* Frameworks */,
 				0E3C03B322C534650046DC99 /* Resources */,
+				E487163FC8279DC9D0925A12 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -292,12 +326,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E3C03A422C534640046DC99 /* LaunchScreen.storyboard in Resources */,
-				0E3C040522C6BD4C0046DC99 /* Cairo-Black.ttf in Resources */,
 				0E3C040922C6D41A0046DC99 /* Montserrat-Regular.ttf in Resources */,
+				0E82DD8222C91F040087B2E0 /* movies test.json in Resources */,
 				0E3C040122C6BAB00046DC99 /* movies.json in Resources */,
 				0E3C03A122C534640046DC99 /* Assets.xcassets in Resources */,
 				0E3C039F22C534600046DC99 /* Main.storyboard in Resources */,
-				0E3C040422C6BD4C0046DC99 /* Cairo-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +338,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E82DD7F22C91BF90087B2E0 /* movies test.json in Resources */,
+				0E82DD8122C91CF90087B2E0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +414,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Awesome Movies/Pods-Awesome Movies-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7AE6519451403F6B29AFDAA2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Awesome MoviesTests/Pods-Awesome MoviesTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Awesome MoviesTests/Pods-Awesome MoviesTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Awesome MoviesTests/Pods-Awesome MoviesTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AD78EBC8F000831B40B4FF80 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -401,6 +453,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E487163FC8279DC9D0925A12 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Awesome MoviesUITests/Pods-Awesome MoviesUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Awesome MoviesUITests/Pods-Awesome MoviesUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Awesome MoviesUITests/Pods-Awesome MoviesUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -409,9 +478,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E3C03FF22C69C460046DC99 /* MovieModelItem.swift in Sources */,
+				0E82DD9722CAB2560087B2E0 /* FlickrApiHelper.swift in Sources */,
 				0E3C039C22C534600046DC99 /* ViewController.swift in Sources */,
 				0E3C040722C6CC9D0046DC99 /* MovieCell.swift in Sources */,
 				0E3C039A22C534600046DC99 /* AppDelegate.swift in Sources */,
+				0E82DD8622C9253A0087B2E0 /* MovieDetailsVC.swift in Sources */,
+				0E82DD9C22CD96300087B2E0 /* FlickrModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

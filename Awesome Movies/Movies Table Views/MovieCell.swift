@@ -23,9 +23,11 @@ class MovieCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func setup(item: MovieModelItem) {
+    func setup(item: MovieModelItem,heroIndex:String) {
         titleLabel.text = item.title ?? ""
+        titleLabel.hero.id = heroIndex + "-title"
         ratingView.rating = item.rating ?? 0
+        ratingView.hero.id = heroIndex + "-rateView"
     }
 
 }

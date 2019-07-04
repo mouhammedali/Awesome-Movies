@@ -7,22 +7,34 @@
 //
 
 import UIKit
-
+import Hero
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var dataArray = [MovieModelItem](){
         didSet{
-            tableView.reloadData()
+            if tableView == nil {
+                return
+            }
+            self.tableView.reloadData()
         }
     }
     var years = [Int]()
-    var dict = [Int:[MovieModelItem]]()
+    var filteredDict = [Int:[MovieModelItem]]()
     let search = UISearchController(searchResultsController: nil)
-    var filtered = [MovieModelItem]()
     var sortedArray = [MovieModelItem]()
     var filterring = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.hero.isEnabled = true
+        setupSearchBar()
+        parseJson(fileName: "movies")
+    }
+    
+    
+    
+    //Helper Functions
+    func setupSearchBar(){
         search.searchBar.tintColor = .white
         search.searchResultsUpdater = self
         search.dimsBackgroundDuringPresentation = false
@@ -31,7 +43,30 @@ class ViewController: UIViewController {
         } else {
             tableView.tableHeaderView = search.searchBar
         }
-        parseJson()
+    }
+    func parseJson(fileName:String){
+        if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let movies = try JSONDecoder().decode(MovieModel.self, from: data)
+                
+                self.dataArray = movies.movies ?? [MovieModelItem]()
+                self.sortedArray = self.dataArray.sorted(by: { ($0.rating ?? 0) > ($1.rating ?? 0) })
+                
+                
+            } catch {
+                print(error)
+            }
+        }
+    }
+    func searchWithTerm(text:String){
+        let filtered = sortedArray.filter({
+            $0.title?.range(of: text, options: .caseInsensitive) != nil
+        })
+        let tempDictionary = Dictionary(grouping: filtered, by: { $0.year ?? 0 }).sorted(by: { $0.0 < $1.0 })
+        filteredDict = Dictionary(uniqueKeysWithValues: tempDictionary)
+        years = Array(filteredDict.keys).sorted()
+        filterring = true
     }
     
 }
@@ -39,48 +74,43 @@ class ViewController: UIViewController {
 extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text, !text.isEmpty {
-            self.filtered = sortedArray.filter({
-                $0.title?.range(of: text, options: .caseInsensitive) != nil
-            })
-            let tempDictionary = Dictionary(grouping: filtered, by: { $0.year ?? 0 }).sorted(by: { $0.0 < $1.0 })
-            dict = Dictionary(uniqueKeysWithValues: tempDictionary)
-            years = Array(dict.keys).sorted()
-            self.filterring = true
+            searchWithTerm(text:text)
         }
         else {
-            self.filterring = false
-            self.filtered = [MovieModelItem]()
+            filterring = false
+            filteredDict = [Int:[MovieModelItem]]()
+            years = [Int]()
         }
         self.tableView.reloadData()
     }
-    func parseJson(){
-        if let path = Bundle.main.path(forResource: "movies", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let movies = try JSONDecoder().decode(MovieModel.self, from: data)
-                dataArray = movies.movies ?? [MovieModelItem]()
-                sortedArray = dataArray.sorted(by: { ($0.rating ?? 0) > ($1.rating ?? 0) })
-            } catch {
-                print(error)
-            }
-        }
-    }
 }
 extension ViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        search.searchBar.resignFirstResponder()
+        search.dismiss(animated: false, completion: nil)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "MovieDetailsVC") as! MovieDetailsVC
+        if filterring {
+            vc.movie = filteredDict[years[indexPath.section]]?[indexPath.row] ?? MovieModelItem()
+        }else{
+            vc.movie = dataArray[indexPath.row]
+        }
+        vc.heroIndex = "\(indexPath.section)-\(indexPath.row)"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier, for: indexPath) as? MovieCell {
+            cell.selectionStyle = .none
             if filterring {
-                cell.setup(item: dict[years[indexPath.section]]?[indexPath.row] ?? MovieModelItem())
+                cell.setup(item: filteredDict[years[indexPath.section]]?[indexPath.row] ?? MovieModelItem(),heroIndex:"\(indexPath.section)-\(indexPath.row)")
                 return cell
             }
-            cell.setup(item: dataArray[indexPath.row])
+            cell.setup(item: dataArray[indexPath.row],heroIndex:"\(indexPath.section)-\(indexPath.row)")
             
             return cell
-
+            
         }
         return UITableViewCell()
     }
@@ -92,10 +122,10 @@ extension ViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if filterring {
-            if (dict[years[section]]?.count ?? 0) > 5 {
+            if (filteredDict[years[section]]?.count ?? 0) > 5 {
                 return 5
             }
-            return dict[years[section]]?.count ?? 0
+            return filteredDict[years[section]]?.count ?? 0
         }
         return dataArray.count
     }
@@ -103,7 +133,7 @@ extension ViewController: UITableViewDataSource {
         if filterring {
             return 30.0
         }
-        return 0
+        return 0.0
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if filterring {
